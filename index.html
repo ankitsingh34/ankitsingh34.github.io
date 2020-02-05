@@ -5,5 +5,23 @@
     </head>
     <body>
         <h1>WEBUSB</h1>
+        
+        <a href="#" id="click">Connect Smart Card Reader</a>
+        <script>
+            click.onclick=function(){
+                navigator.usb.requestDevice({ filters: [
+                    //{vendorId:1839},{vendorId:2278}
+                    ] })
+                    .then(device => {
+                    console.log(device);   
+                    console.log(device.productId.toString(16));
+                    console.log(device.vendorId.toString(16));
+                    console.log(device.manufacturerName); 
+                })
+                .catch(error => { console.log(error); });      
+   
+            }
+        </script>
+
     </body>
 </html>
